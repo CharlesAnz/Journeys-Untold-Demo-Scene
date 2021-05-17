@@ -257,10 +257,20 @@ public class Ability : ScriptableObject
 
     protected void SpawnProjectile(Vector3 hitPosition)
     {
-        if(projectileSpawnPos == Vector3.zero) projectileSpawnPos = new Vector3(abilityUser.transform.localPosition.x, abilityUser.transform.localPosition.y + 1, abilityUser.transform.localPosition.z + 1);
+        GameObject spawnedProjectile;
+        Vector3 newProjectileSpawnPos = Vector3.zero;
 
-        GameObject spawnedProjectile = Instantiate(projectile, projectileSpawnPos, Quaternion.identity);
+        if (projectileSpawnPos == Vector3.zero)
+        {
+            newProjectileSpawnPos = new Vector3(abilityUser.transform.localPosition.x, abilityUser.transform.localPosition.y + 1, abilityUser.transform.localPosition.z + 1);
+            spawnedProjectile = Instantiate(projectile, newProjectileSpawnPos, projectile.transform.rotation);
+        }
+        else
+        {
+            spawnedProjectile = Instantiate(projectile, projectileSpawnPos, projectile.transform.rotation);
+        }
 
+       
         Debug.Log("Projectile Spawned ");
 
         displacePos = spawnedProjectile.transform.position;
@@ -275,8 +285,17 @@ public class Ability : ScriptableObject
         }
         projectileScript.targetType = targetType;
         projectileScript.user = abilityUser;
+        Vector3 direction;
 
-        Vector3 direction = (hitPosition - projectileSpawnPos).normalized;
+        if (projectileSpawnPos == Vector3.zero)
+        {
+            direction = (hitPosition - newProjectileSpawnPos).normalized;
+        }
+        else
+        {
+            direction = (hitPosition - projectileSpawnPos).normalized;
+        }
+        
         Debug.Log("Projectile Direction: " +  direction.normalized);
 
         spawnedProjectile.GetComponent<Rigidbody>().velocity = direction * (Time.deltaTime + 10);

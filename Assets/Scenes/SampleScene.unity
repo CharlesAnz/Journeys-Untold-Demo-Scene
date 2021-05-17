@@ -134,14 +134,14 @@ GameObject:
   - component: {fileID: 395067217}
   - component: {fileID: 395067214}
   - component: {fileID: 395067213}
-  - component: {fileID: 395067212}
+  - component: {fileID: 395067216}
   - component: {fileID: 395067211}
   - component: {fileID: 395067210}
+  - component: {fileID: 395067215}
+  - component: {fileID: 395067212}
   - component: {fileID: 395067209}
   - component: {fileID: 395067208}
   - component: {fileID: 395067207}
-  - component: {fileID: 395067215}
-  - component: {fileID: 395067216}
   m_Layer: 0
   m_Name: Test Character
   m_TagString: Player
@@ -158,33 +158,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 395067206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f55113a9dbabf14d81ef4bddb7ff6b4, type: 3}
+  m_Script: {fileID: 11500000, guid: a5b91367176638e49b651a6da5a010c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHP: 0
-  maxHP:
-    statName: 
-    baseValue: 100
-  damage:
-    statName: 
-    baseValue: 5
-  armor:
-    statName: 
-    baseValue: 2
-  moveSpeed:
-    statName: 
-    baseValue: 3.5
-  attackSpeed:
-    statName: 
-    baseValue: 1.5
-  dead: 0
-  abilities:
-  - {fileID: 11400000, guid: 167c0d44e2f30014d8e08cc3f5e0854b, type: 2}
-  - {fileID: 11400000, guid: 731d60e99c7a08a4b9d4ff8838c55a6f, type: 2}
-  - {fileID: 11400000, guid: 0b88c588ac8cb5d4aab0eef4560a66c8, type: 2}
-  abilityParticleEffects: []
-  buffs: []
-  resetPos: {fileID: 0}
+  armorBuffIndicator: {fileID: 0}
+  healingBuffIndicator: {fileID: 0}
+  damageBuffIndicator: {fileID: 0}
+  attackRange: 1.2
+  rooted: 0
+  silenced: 0
+  castTime: 0
+  attackDelay: 0.6
+  cc_Effects: []
 --- !u!114 &395067208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,10 +179,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 395067206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f8d4f78a8defac459712bdf3ead5482, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d216665d5ec1d4291530a80360223c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curEquipment: []
+  characterAnim: {fileID: 0}
 --- !u!114 &395067209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,31 +192,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 395067206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378f6c0d9b7ffb74ea3ea82e8967d09f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f55113a9dbabf14d81ef4bddb7ff6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curHP: 0
+  maxHP:
+    statName: 
+    baseValue: 200
+  damage:
+    statName: 
+    baseValue: 8
+  armor:
+    statName: 
+    baseValue: 3
+  moveSpeed:
+    statName: 
+    baseValue: 6
+  attackSpeed:
+    statName: 
+    baseValue: 1
+  dead: 0
+  abilities: []
+  abilityParticleEffects: []
+  buffs: []
+  resetPos: {fileID: 0}
 --- !u!114 &395067210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 395067206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b91367176638e49b651a6da5a010c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armorBuffIndicator: {fileID: 0}
-  healingBuffIndicator: {fileID: 0}
-  damageBuffIndicator: {fileID: 0}
-  attackRange: 1.3
-  rooted: 0
-  silenced: 0
-  castTime: 0
-  attackDelay: 0.2
-  cc_Effects: []
---- !u!114 &395067211
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,6 +233,18 @@ MonoBehaviour:
     m_Bits: 1
   focus: {fileID: 0}
   activeCharacter: 0
+--- !u!114 &395067211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395067206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378f6c0d9b7ffb74ea3ea82e8967d09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &395067212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,11 +254,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 395067206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f90afd53b61eeb24e9ff940b354463dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f8d4f78a8defac459712bdf3ead5482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  space: 20
-  items: []
+  curEquipment: []
 --- !u!195 &395067213
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -271,7 +267,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 395067206}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.49999997
+  m_Radius: 0.3
   m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
@@ -307,10 +303,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 395067206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95d216665d5ec1d4291530a80360223c, type: 3}
+  m_Script: {fileID: 11500000, guid: f90afd53b61eeb24e9ff940b354463dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAnim: {fileID: 0}
+  space: 20
+  items: []
 --- !u!54 &395067216
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -340,7 +337,7 @@ Transform:
   m_Children:
   - {fileID: 4445584563789649}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &632163109
 GameObject:
@@ -545,7 +542,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 49.555, y: 56.895, z: 146.552}
 --- !u!1 &787999146
 GameObject:
@@ -608,13 +605,13 @@ GameObject:
   m_Component:
   - component: {fileID: 909129331}
   - component: {fileID: 909129330}
-  - component: {fileID: 909129332}
-  - component: {fileID: 909129333}
-  - component: {fileID: 909129334}
-  - component: {fileID: 909129335}
-  - component: {fileID: 909129336}
   - component: {fileID: 909129329}
   - component: {fileID: 909129328}
+  - component: {fileID: 909129336}
+  - component: {fileID: 909129335}
+  - component: {fileID: 909129334}
+  - component: {fileID: 909129333}
+  - component: {fileID: 909129332}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Enemy
@@ -661,7 +658,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 909129327}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.49999997
+  m_Radius: 0.3
   m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
@@ -682,13 +679,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909129327}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.9521637, y: 0.7, z: -0.29}
+  m_LocalPosition: {x: 1.9521637, y: 0.7, z: 5.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1165195912}
   - {fileID: 4255537084591370424}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &909129332
 MonoBehaviour:
@@ -699,28 +696,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 909129327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded7e0346c295c54cb1b27a337e3d34e, type: 3}
+  m_Script: {fileID: 11500000, guid: a5b91367176638e49b651a6da5a010c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 10
-  abilityBehaviors: 000000000000000000000000
+  armorBuffIndicator: {fileID: 0}
+  healingBuffIndicator: {fileID: 0}
+  damageBuffIndicator: {fileID: 0}
+  attackRange: 1
+  rooted: 0
+  silenced: 0
+  castTime: 0
+  attackDelay: 0.6
+  cc_Effects: []
 --- !u!114 &909129333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909129327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48feec6a314f1c54599daf0fe95856d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 1.3
-  interactionTransform: {fileID: 909129331}
-  myStats: {fileID: 0}
-  interactorCombats: []
---- !u!114 &909129334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -738,42 +726,22 @@ MonoBehaviour:
     baseValue: 100
   damage:
     statName: 
-    baseValue: 0
+    baseValue: 7
   armor:
     statName: 
-    baseValue: 3
+    baseValue: 5
   moveSpeed:
     statName: 
-    baseValue: 2
+    baseValue: 4
   attackSpeed:
     statName: 
     baseValue: 1
   dead: 0
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 8770a7b1689a5bc4bb5272e1ddba5c09, type: 2}
   abilityParticleEffects: []
   buffs: []
---- !u!114 &909129335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909129327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b91367176638e49b651a6da5a010c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armorBuffIndicator: {fileID: 0}
-  healingBuffIndicator: {fileID: 0}
-  damageBuffIndicator: {fileID: 0}
-  attackRange: 1.3
-  rooted: 0
-  silenced: 0
-  castTime: 0
-  attackDelay: 0.6
-  cc_Effects: []
---- !u!114 &909129336
+--- !u!114 &909129334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -786,6 +754,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnim: {fileID: 0}
+--- !u!114 &909129335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909129327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48feec6a314f1c54599daf0fe95856d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  interactionTransform: {fileID: 909129331}
+  myStats: {fileID: 0}
+  interactorCombats: []
+--- !u!114 &909129336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909129327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded7e0346c295c54cb1b27a337e3d34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookRadius: 10
+  abilityBehaviors: 000000000000000000000000
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -868,7 +866,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -1061,7 +1059,7 @@ Transform:
   m_LocalScale: {x: 0.3187, y: 0.3187, z: 0.3187}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1174587269
 MonoBehaviour:
@@ -1172,7 +1170,7 @@ Transform:
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &1527247615
 LightingSettings:
@@ -1521,7 +1519,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1004811513180341
 GameObject:
@@ -14329,7 +14327,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -17750,7 +17748,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29ae035edc32de447921400b0ecd43ed, type: 3}
+  m_Name: Knife Throw
+  m_EditorClassIdentifier: 
+  description: Throws knife
+  icon: {fileID: 0}
+  buffList:
+  - amount: -1
+    affects: 1
+    duration: 5
+    durationTimer: 5
+    ramping: 0
+  cc_Effects:
+  - affect: 0
+    duration: 5
+    durationTimer: 5
+  projectile: {fileID: 4915467226096152956, guid: 2cb8a584c5b6d5b48afa94df8f4eaafe, type: 3}
+  delay: 0
+  range: 3
+  displacement:
+    pushOrPull: 0
+    distance: 0
+  doesDamage: 1
+  doesHealing: 0
+  abilityValue: 5
+  cooldown: 8
+  targetType: 1
+  animatorTrigger: ability1
+  spawnParticleEffect: {fileID: 100000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
+  castTime: 1
+  cooldownTimer: 6.2124963
+  targetHit: {fileID: 0}
