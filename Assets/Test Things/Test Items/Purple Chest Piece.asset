@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30695d1541592c4d9616ccdf7223db7, type: 3}
   m_Name: Purple Chest Piece
   m_EditorClassIdentifier: 
-  name: Purple Breastplate
-  icon: {fileID: 21300000, guid: e49632776de7f0a4482a78059933c8ed, type: 3}
+  name: Shield
+  icon: {fileID: 21300000, guid: 3e30850314dbf6c4fb4dd1cc6c10884b, type: 3}
   color: {r: 255, g: 255, b: 255, a: 1}
   isDefault: 0
-  equipSlot: 1
+  equipSlot: 4
   statMods: []
-  armorMod: 5
+  armorMod: 3
   damageMod: 0
